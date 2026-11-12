@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 
 class ExpenseLineChart extends StatelessWidget {
-  final List> dailyExpenses;
+  final List dailyExpenses;
   const ExpenseLineChart({super.key, required this.dailyExpenses});
 
   @override
