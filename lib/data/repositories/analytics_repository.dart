@@ -22,14 +22,21 @@ class AnalyticsReport {
   final int maxExpense;
   final double savingsRate;
   final List> monthlyData;
-final List> timelineData;
-final List> categoryDistribution;
-final List> paymentMethodDistribution;
+  final List> timelineData;
+  final List> categoryDistribution;
+  final List> paymentMethodDistribution;
 
   const AnalyticsReport({
-    required this.totalIncome, required this.totalExpense, required this.netBalance,
-    required this.transactionCount, required this.averageExpense, required this.maxExpense,
-    required this.savingsRate, required this.timelineData, required this.categoryDistribution,
+    required this.totalIncome,
+    required this.totalExpense,
+    required this.netBalance,
+    required this.transactionCount,
+    required this.averageExpense,
+    required this.maxExpense,
+    required this.savingsRate,
+    this.monthlyData = const [],
+    required this.timelineData,
+    required this.categoryDistribution,
     required this.paymentMethodDistribution,
   });
 }
@@ -41,15 +48,21 @@ class AnalyticsRepository {
   (DateTime, DateTime) _resolveDates(AnalyticsFilter filter) {
     final now = DateTime.now();
     switch (filter.period) {
-      case AnalyticsPeriod.today: return (DateTime(now.year, now.month, now.day), DateTime(now.year, now.month, now.day, 23, 59, 59));
+      case AnalyticsPeriod.today:
+        return (DateTime(now.year, now.month, now.day), DateTime(now.year, now.month, now.day, 23, 59, 59));
       case AnalyticsPeriod.yesterday:
         final y = now.subtract(const Duration(days: 1));
         return (DateTime(y.year, y.month, y.day), DateTime(y.year, y.month, y.day, 23, 59, 59));
-      case AnalyticsPeriod.thisWeek: return (DateTime(now.year, now.month, now.day - (now.weekday - 1)), DateTime(now.year, now.month, now.day, 23, 59, 59));
-      case AnalyticsPeriod.thisMonth: return (DateTime(now.year, now.month, 1), DateTime(now.year, now.month + 1, 0, 23, 59, 59));
-      case AnalyticsPeriod.lastMonth: return (DateTime(now.year, now.month - 1, 1), DateTime(now.year, now.month, 0, 23, 59, 59));
-      case AnalyticsPeriod.thisYear: return (DateTime(now.year, 1, 1), DateTime(now.year, 12, 31, 23, 59, 59));
-      case AnalyticsPeriod.custom: return (filter.customStartDate ?? DateTime(now.year, now.month, 1), filter.customEndDate ?? DateTime(now.year, now.month, now.day, 23, 59, 59));
+      case AnalyticsPeriod.thisWeek:
+        return (DateTime(now.year, now.month, now.day - (now.weekday - 1)), DateTime(now.year, now.month, now.day, 23, 59, 59));
+      case AnalyticsPeriod.thisMonth:
+        return (DateTime(now.year, now.month, 1), DateTime(now.year, now.month + 1, 0, 23, 59, 59));
+      case AnalyticsPeriod.lastMonth:
+        return (DateTime(now.year, now.month - 1, 1), DateTime(now.year, now.month, 0, 23, 59, 59));
+      case AnalyticsPeriod.thisYear:
+        return (DateTime(now.year, 1, 1), DateTime(now.year, 12, 31, 23, 59, 59));
+      case AnalyticsPeriod.custom:
+        return (filter.customStartDate ?? DateTime(now.year, now.month, 1), filter.customEndDate ?? DateTime(now.year, now.month, now.day, 23, 59, 59));
     }
   }
 
@@ -110,9 +123,15 @@ class AnalyticsRepository {
     final timelineData = timelineRows.map((r) => {'date': r['date'] as String, 'income': r['inc'] as int, 'expense': r['exp'] as int}).toList();
 
     return AnalyticsReport(
-      totalIncome: totalIncome, totalExpense: totalExpense, netBalance: netBalance,
-      transactionCount: transactionCount, averageExpense: averageExpense, maxExpense: maxExpense,
-      savingsRate: savingsRate, timelineData: timelineData, categoryDistribution: categoryDistribution,
+      totalIncome: totalIncome,
+      totalExpense: totalExpense,
+      netBalance: netBalance,
+      transactionCount: transactionCount,
+      averageExpense: averageExpense,
+      maxExpense: maxExpense,
+      savingsRate: savingsRate,
+      timelineData: timelineData,
+      categoryDistribution: categoryDistribution,
       paymentMethodDistribution: paymentMethodDistribution,
     );
   }
