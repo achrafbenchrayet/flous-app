@@ -21,10 +21,10 @@ class AnalyticsReport {
   final int averageExpense;
   final int maxExpense;
   final double savingsRate;
-  final List> monthlyData;
-  final List> timelineData;
-  final List> categoryDistribution;
-  final List> paymentMethodDistribution;
+  final List monthlyData;
+  final List timelineData;
+  final List categoryDistribution;
+  final List paymentMethodDistribution;
 
   const AnalyticsReport({
     required this.totalIncome,
@@ -66,7 +66,7 @@ class AnalyticsRepository {
     }
   }
 
-  Future<AnalyticsReport> generateReport(String userId, AnalyticsFilter filter) async {
+  Future generateReport(String userId, AnalyticsFilter filter) async {
     final db = await _appDb.database;
     final (start, end) = _resolveDates(filter);
     final startStr = _dateFormat.format(start);
