@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 
 class MonthlyBarChart extends StatelessWidget {
-  final List> monthlyData;
+  final List monthlyData;
   const MonthlyBarChart({super.key, required this.monthlyData});
 
   @override
