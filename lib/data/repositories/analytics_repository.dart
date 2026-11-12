@@ -21,9 +21,10 @@ class AnalyticsReport {
   final int averageExpense;
   final int maxExpense;
   final double savingsRate;
-  final List> timelineData;
-  final List> categoryDistribution;
-  final List> paymentMethodDistribution;
+  final List> monthlyData;
+final List> timelineData;
+final List> categoryDistribution;
+final List> paymentMethodDistribution;
 
   const AnalyticsReport({
     required this.totalIncome, required this.totalExpense, required this.netBalance,
