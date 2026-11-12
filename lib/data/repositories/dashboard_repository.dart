@@ -11,9 +11,9 @@ class DashboardData {
   final String topExpenseCategory;
   final int dailyAverageExpense;
   final List<TransactionModel> recentTransactions;
-  final List> last7DaysExpenses;
-  final List> categoryDistribution;
-  final List> monthlyComparison;
+  final List<Map<String, dynamic>> last7DaysExpenses;
+  final List<Map<String, dynamic>> categoryDistribution;
+  final List<Map<String, dynamic>> monthlyComparison;
 
   DashboardData({
     required this.totalBalance,
@@ -87,7 +87,7 @@ class DashboardRepository {
     ''', [userId]);
     final recentTransactions = recentRaw.map((row) => TransactionModel.fromMap(row)).toList();
 
-    final List> last7Days = [];
+    final List<Map<String, dynamic>> last7Days = [];
     for (int i = 6; i >= 0; i--) {
       final d = now.subtract(Duration(days: i));
       final dStr = DateFormat('yyyy-MM-dd').format(d);
@@ -105,7 +105,7 @@ class DashboardRepository {
 
     final categoryDistribution = catDistRaw.map((row) => {'name': row['name'] as String, 'color': row['color'] as int, 'amount': row['total'] as int}).toList();
 
-    final List> monthlyComp = [];
+    final List<Map<String, dynamic>> monthlyComp = [];
     for (int i = 3; i >= 0; i--) {
       final mDate = DateTime(now.year, now.month - i, 1);
       final mStr = DateFormat('yyyy-MM').format(mDate);
