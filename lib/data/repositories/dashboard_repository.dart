@@ -16,10 +16,16 @@ class DashboardData {
   final List> monthlyComparison;
 
   DashboardData({
-    required this.totalBalance, required this.monthIncome, required this.monthExpense,
-    required this.savingsRate, required this.topExpenseCategory, required this.dailyAverageExpense,
-    required this.recentTransactions, required this.last7DaysExpenses,
-    required this.categoryDistribution, required this.monthlyComparison,
+    required this.totalBalance,
+    required this.monthIncome,
+    required this.monthExpense,
+    required this.savingsRate,
+    required this.topExpenseCategory,
+    required this.dailyAverageExpense,
+    required this.recentTransactions,
+    required this.last7DaysExpenses,
+    required this.categoryDistribution,
+    required this.monthlyComparison,
   });
 }
 
@@ -114,10 +120,16 @@ class DashboardRepository {
     }
 
     return DashboardData(
-      totalBalance: totalAvailableBalance, monthIncome: monthIncome, monthExpense: monthExpense,
-      savingsRate: savingsRate, topExpenseCategory: topExpenseCategory, dailyAverageExpense: dailyAverageExpense,
-      recentTransactions: recentTransactions, last7DaysExpenses: last7Days,
-      categoryDistribution: categoryDistribution, monthlyComparison: monthlyComp,
+      totalBalance: totalAvailableBalance,
+      monthIncome: monthIncome,
+      monthExpense: monthExpense,
+      savingsRate: savingsRate,
+      topExpenseCategory: topExpenseCategory,
+      dailyAverageExpense: dailyAverageExpense,
+      recentTransactions: recentTransactions,
+      last7DaysExpenses: last7Days,
+      categoryDistribution: categoryDistribution,
+      monthlyComparison: monthlyComp,
     );
   }
 }
