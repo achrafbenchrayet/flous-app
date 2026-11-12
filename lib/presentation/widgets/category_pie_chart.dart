@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPieChart extends StatelessWidget {
-  final List> categoryDistribution;
+  final List categoryDistribution;
   const CategoryPieChart({super.key, required this.categoryDistribution});
 
   @override
