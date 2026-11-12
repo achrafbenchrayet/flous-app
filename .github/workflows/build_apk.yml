@@ -28,7 +28,10 @@ jobs:
           cache: true
 
       - name: Initialisation des fichiers natifs Android manquants
-        run: flutter create --project-name flous_app .
+        run: |
+          flutter create --project-name flous_app .
+          sed -i 's/id "org.jetbrains.kotlin.android" version "[^"]*"/id "org.jetbrains.kotlin.android" version "2.0.21"/g' android/settings.gradle
+          sed -i "s/ext.kotlin_version = '[^']*'/ext.kotlin_version = '2.0.21'/g" android/build.gradle || true
 
       - name: Téléchargement des dépendances
         run: flutter pub get
