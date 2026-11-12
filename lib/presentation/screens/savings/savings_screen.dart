@@ -14,9 +14,9 @@ class SavingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final goalsAsync = ref.watch(savingsGoalsListProvider);
 
-    return Scaffold(
+   return Scaffold(
       appBar: AppBar(
-        title: const Text('Objectifs d'Épargne'),
+        title: const Text('Objectifs d\'épargne'),
         actions: [
           IconButton(icon: const Icon(Icons.pie_chart), onPressed: () => context.push('/budgets')),
         ],
